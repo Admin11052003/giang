@@ -38,7 +38,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // import HomeScreen from './screens/HomeScreen';
-import MenuScreen from './screens/MenuScreen';
+// import MenuScreen from './screens/MenuScreen';
+// import CategoriesScreen from './screens/CategoriesScreen';
+// import HomeScreen from './screens/HomeScreen';
+// import SavedItemsScreen from './screens/SavedItemsScreen';
+// import MainScreenHome from './screens/MainScreenHome';
+import TrangMot from './screens/TrangMot';
 
 const Stack = createStackNavigator();
 
@@ -46,8 +51,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Home" component={TrangMot} />
+        {/* <Stack.Screen name="Home" component={MainScreenHome} /> */}
+        {/* <Stack.Screen name="Saved Items" component={SavedItemsScreen} /> */}
+        {/* <Stack.Screen name="Categories" component={CategoriesScreen} /> */}
+        {/* <Stack.Screen name="Menu" component={MenuScreen} /> */}
         {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
-        <Stack.Screen name="Menu" component={MenuScreen} />
         {/* Add more screens like RestaurantDetail as needed */}
       </Stack.Navigator>
     </NavigationContainer>
