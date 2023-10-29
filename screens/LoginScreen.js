@@ -1,61 +1,61 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, TextInput, Button, StyleSheet, Image } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
-    try {
-      // Retrieve user data from AsyncStorage
-      const storedUsername = await AsyncStorage.getItem('username');
-      const storedPassword = await AsyncStorage.getItem('password');
-
-      // Check if the provided username and password match the stored data
-      if (username === storedUsername && password === storedPassword) {
-        Alert.alert('Login Successful');
-      } else {
-        Alert.alert('Login Failed', 'Incorrect username or password');
-      }
-    } catch (error) {
-      Alert.alert('Error logging in', error.message);
+  const handleLogin = () => {
+    // Xử lý logic đăng nhập ở đây
+    // Kiểm tra thông tin đăng nhập, nếu đúng, chuyển đến màn hình chính
+    if (username === 'qqq' && password === 'qqq') {
+        alert('Đăng nhập thành công');
+        navigation.navigate('Main');
+    }
+    else{
+        alert('Đăng nhập không thành công');
     }
   };
 
   return (
     <View style={styles.container}>
+      <View style={styles.img}>
+              <Image source={require('../assets/logo.png')} style={styles.headerImage} />
+      </View>
       <TextInput
-        styles={styles.input}
-        placeholder="Username"
+        placeholder="Tài khoản"
+        onChangeText={text => setUsername(text)}
         value={username}
-        onChangeText={setUsername}
+        style={styles.input}
       />
       <TextInput
-        styles={styles.input}
-        placeholder="Password"
+        placeholder="Mật khẩu"
+        onChangeText={text => setPassword(text)}
         value={password}
-        onChangeText={setPassword}
+        style={styles.input}
         secureTextEntry
       />
-      <Button
-        title="Login"
-        onPress={handleLogin}
-      />
+      <Button title="Đăng nhập" onPress={handleLogin} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container:{
-    padding: 20,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 250,
   },
-  input:{
-    marginBottom: 20,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    //borderradius: 5,
+  input: {
+    width: 300,
+    height: 40,
+    borderBottomWidth: 1,
+    margin: 10,
+  },
+  img: {
+    marginBottom:150,
   },
 });
+
 export default LoginScreen;
